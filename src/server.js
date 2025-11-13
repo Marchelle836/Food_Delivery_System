@@ -3,6 +3,8 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const mysql = require('mysql2');
 const path = require('path');
+// const { swaggerDocument } = require("./docs/swagger.js");
+// const swaggerUi = require("swagger-ui-express");
 
 // Pastikan dotenv memuat file dari root project (bukan dari /src)
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
@@ -42,18 +44,23 @@ db.connect((err) => {
   }
 });
 
-// ✅ Import order routes
+
+const authRoutes = require('./routes/authRoutes.js'); 
+app.use("/auth", authRoutes);
+const userRoutes = require('./routes/userRoutes.js'); 
+app.use("/users", userRoutes);
 const orderRoutes = require('./routes/orderRoutes.js'); // pastikan path ini sesuai struktur foldermu
 app.use('/orders', orderRoutes); // semua endpoint diawali /orders
 const restaurantRoutes = require('./routes/restaurantRoutes.js');
 app.use('/restaurants', restaurantRoutes);
 const menuRoutes = require("./routes/menuRoutes.js");
 app.use("/restaurants/:restaurantId/menus", menuRoutes);
+// app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 
 // Simple test route
 app.get('/', (req, res) => {
-  res.send('🍔 Order Service is running!');
+  res.send('🍔 FDS Service is running!');
 });
 
 // Start the server

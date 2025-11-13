@@ -37,5 +37,23 @@ export const swaggerDocument = {
         parameters: [{ name: "id", in: "path", required: true }],
       },
     },
+    "/restaurants": {
+      get: {
+        summary: "Get all restaurants",
+        responses: { 200: { description: "Restaurant list" } },
+      },
+      post: {
+        summary: "Create a new restaurant",
+        responses: {
+          201: { description: "Retaurant created" },
+        },
+      },
+    },
+    "/restaurants/{id}/menu": {
+      put: {
+        summary: "Create restaurant",
+        parameters: [{ name: "id", in: "path", required: true }],
+      },
+    },
   },
 };
