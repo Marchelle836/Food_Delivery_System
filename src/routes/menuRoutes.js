@@ -9,10 +9,10 @@ const {
 
 const router = express.Router({ mergeParams: true });
 
-router.get("/", getMenusByRestaurant);
-router.get("/:id", getMenu);
+// router.get("/", getMenusByRestaurant);
+// router.get("/:id", getMenu);
 router.post("/", createMenu);
-router.put("/:id", updateMenu);
-router.delete("/:id", deleteMenu);
+// router.put("/:id", updateMenu);
+// router.delete("/:id", deleteMenu);
 
 module.exports = router;

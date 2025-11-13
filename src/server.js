@@ -45,6 +45,11 @@ db.connect((err) => {
 // ✅ Import order routes
 const orderRoutes = require('./routes/orderRoutes.js'); // pastikan path ini sesuai struktur foldermu
 app.use('/orders', orderRoutes); // semua endpoint diawali /orders
+const restaurantRoutes = require('./routes/restaurantRoutes.js');
+app.use('/restaurants', restaurantRoutes);
+const menuRoutes = require("./routes/menuRoutes.js");
+app.use("/restaurants/:restaurantId/menus", menuRoutes);
+
 
 // Simple test route
 app.get('/', (req, res) => {
